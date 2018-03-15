@@ -12,6 +12,9 @@ function createExternals() {
         'pc-nrfjprog-js',
         'serialport',
         'usb',
+        'mqtt',
+        'microtime',
+        'mosca',
     ];
     return libs.reduce((prev, lib) => (
         Object.assign(prev, { [lib]: `commonjs ${lib}` })
