@@ -39,7 +39,7 @@ import PropTypes from 'prop-types';
 import { Iterable } from 'immutable';
 
 import AppItem from './AppItem';
-import AppManagementFilter from '../containers/AppManagementFilterContainer';
+import AppManagementFilter from './AppManagementFilter';
 import ReleaseNotesDialog from '../containers/ReleaseNotesDialogContainer';
 
 const AppManagementView = ({
