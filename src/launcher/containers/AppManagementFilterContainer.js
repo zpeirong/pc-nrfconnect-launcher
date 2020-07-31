@@ -39,15 +39,14 @@ import AppManagementFilter from '../components/AppManagementFilter';
 import * as AppsActions from '../actions/appsActions';
 
 export default connect(
-    ({ apps: { show, filter } }, { apps }) => ({
+    ({ apps: { show, filter, isUpgradingAllApps } }, { apps }) => ({
         show: { ...show },
         filter,
+        isUpgradingAllApps,
         upgradeableApps: apps.filter(app => app.upgradeAvailable),
     }),
     dispatch => ({
-        onUpgrade: (name, version, source) => dispatch(
-            AppsActions.upgradeOfficialApp(name, version, source),
-        ),
+        upgradeAllApps: apps => dispatch(AppsActions.upgradeAllApps(apps)),
         setAppManagementShow: show => dispatch(AppsActions.setAppManagementShow(show)),
         setAppManagementFilter: filter => dispatch(AppsActions.setAppManagementFilter(filter)),
         setAppManagementSource: (source, show) => dispatch(

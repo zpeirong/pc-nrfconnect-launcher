@@ -57,6 +57,8 @@ export const INSTALL_OFFICIAL_APP_ERROR = 'INSTALL_OFFICIAL_APP_ERROR';
 export const REMOVE_OFFICIAL_APP = 'REMOVE_OFFICIAL_APP';
 export const REMOVE_OFFICIAL_APP_SUCCESS = 'REMOVE_OFFICIAL_APP_SUCCESS';
 export const REMOVE_OFFICIAL_APP_ERROR = 'REMOVE_OFFICIAL_APP_ERROR';
+export const UPGRADE_ALL_APPS = 'UPGRADE_ALL_APPS';
+export const UPGRADE_ALL_APPS_SUCCESS = 'UPGRADE_ALL_APPS_SUCCESS';
 export const UPGRADE_OFFICIAL_APP = 'UPGRADE_OFFICIAL_APP';
 export const UPGRADE_OFFICIAL_APP_SUCCESS = 'UPGRADE_OFFICIAL_APP_SUCCESS';
 export const UPGRADE_OFFICIAL_APP_ERROR = 'UPGRADE_OFFICIAL_APP_ERROR';
@@ -150,6 +152,18 @@ function removeOfficialAppSuccessAction(name, source) {
 function removeOfficialAppErrorAction() {
     return {
         type: REMOVE_OFFICIAL_APP_ERROR,
+    };
+}
+
+function upgradeAllAppsAction() {
+    return {
+        type: UPGRADE_ALL_APPS,
+    };
+}
+
+function upgradeAllAppsSuccessAction() {
+    return {
+        type: UPGRADE_ALL_APPS_SUCCESS,
     };
 }
 
@@ -377,6 +391,17 @@ export function upgradeOfficialApp(name, version, source) {
                 dispatch(upgradeOfficialAppErrorAction());
                 dispatch(ErrorDialogActions.showDialog(`Unable to upgrade: ${error.message}`));
             });
+    };
+}
+
+export function upgradeAllApps(apps) {
+    return async dispatch => {
+        dispatch(upgradeAllAppsAction());
+        const upgrades = apps.map(({ name, latestVersion, source }) => (
+            dispatch(upgradeOfficialApp(name, latestVersion, source))
+        ));
+        await Promise.all(upgrades);
+        dispatch(upgradeAllAppsSuccessAction());
     };
 }
 

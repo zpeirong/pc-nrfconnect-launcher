@@ -53,6 +53,7 @@ const InitialState = Record({
     confirmLaunchText: '',
     confirmLaunchApp: null,
     show: { installed: true, available: true },
+    isUpgradingAllApps: false,
     filter: '',
     sources: {},
 });
@@ -122,6 +123,8 @@ const reducer = (state = initialState, action) => {
             return state.set('removingAppName', `${action.source}/${action.name}`);
         case AppsActions.UPGRADE_OFFICIAL_APP:
             return state.set('upgradingAppName', `${action.source}/${action.name}`);
+        case AppsActions.UPGRADE_ALL_APPS:
+            return state.set('isUpgradingAllApps', true);
         case AppsActions.INSTALL_OFFICIAL_APP_SUCCESS:
             return state.set('installingAppName', initialState.installingAppName);
         case AppsActions.REMOVE_OFFICIAL_APP_SUCCESS:
@@ -134,6 +137,8 @@ const reducer = (state = initialState, action) => {
             return state.set('removingAppName', initialState.removingAppName);
         case AppsActions.UPGRADE_OFFICIAL_APP_ERROR:
             return state.set('upgradingAppName', initialState.upgradingAppName);
+        case AppsActions.UPGRADE_ALL_APPS_SUCCESS:
+            return state.set('isUpgradingAllApps', false);
         case AppsActions.SHOW_CONFIRM_LAUNCH_DIALOG:
             return showConfirmLaunchDialog(state, action.text, action.app);
         case AppsActions.HIDE_CONFIRM_LAUNCH_DIALOG:

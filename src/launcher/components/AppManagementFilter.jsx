@@ -152,10 +152,11 @@ const AppManagementFilter = ({
     sources,
     show,
     filter,
-    onUpgrade,
     setAppManagementShow,
     setAppManagementFilter,
     setAppManagementSource,
+    upgradeAllApps,
+    isUpgradingAllApps,
 }) => (
     <div className="filterbox mb-3 w-100 d-inline-flex">
         <FilterDropdown
@@ -174,13 +175,10 @@ const AppManagementFilter = ({
         { upgradeableApps.size > 0 && (
             <Button
                 variant="outline-secondary"
-                onClick={() => upgradeableApps.forEach(
-                    ({ name, latestVersion, source }) => (
-                        onUpgrade(name, latestVersion, source)
-                    ),
-                )}
+                onClick={() => upgradeAllApps(upgradeableApps)}
+                disabled={isUpgradingAllApps}
             >
-                Update all apps
+                {isUpgradingAllApps ? 'Updating all apps...' : 'Update all apps'}
             </Button>
         )}
     </div>
@@ -189,7 +187,6 @@ const AppManagementFilter = ({
 AppManagementFilter.propTypes = {
     upgradeableApps: PropTypes.instanceOf(Iterable).isRequired,
     sources: PropTypes.instanceOf(Object).isRequired,
-    onUpgrade: PropTypes.func.isRequired,
     show: PropTypes.shape({
         installed: PropTypes.bool,
         available: PropTypes.bool,
@@ -198,6 +195,8 @@ AppManagementFilter.propTypes = {
     setAppManagementShow: PropTypes.func.isRequired,
     setAppManagementFilter: PropTypes.func.isRequired,
     setAppManagementSource: PropTypes.func.isRequired,
+    upgradeAllApps: PropTypes.func.isRequired,
+    isUpgradingAllApps: PropTypes.bool.isRequired,
 };
 
 export default AppManagementFilter;
