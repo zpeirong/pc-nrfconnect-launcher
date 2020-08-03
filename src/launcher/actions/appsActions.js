@@ -73,175 +73,127 @@ export const SET_APP_MANAGEMENT_SHOW = 'SET_APP_MANAGEMENT_SHOW';
 export const SET_APP_MANAGEMENT_FILTER = 'SET_APP_MANAGEMENT_FILTER';
 export const SET_APP_MANAGEMENT_SOURCE = 'SET_APP_MANAGEMENT_SOURCE';
 
-function loadLocalAppsAction() {
-    return {
-        type: LOAD_LOCAL_APPS,
-    };
-}
+const loadLocalAppsAction = () => ({
+    type: LOAD_LOCAL_APPS,
+});
 
-function loadLocalAppsSuccess(apps) {
-    return {
-        type: LOAD_LOCAL_APPS_SUCCESS,
-        apps,
-    };
-}
+const loadLocalAppsSuccess = apps => ({
+    type: LOAD_LOCAL_APPS_SUCCESS,
+    apps,
+});
 
-function loadLocalAppsError() {
-    return {
-        type: LOAD_LOCAL_APPS_ERROR,
-    };
-}
+const loadLocalAppsError = () => ({
+    type: LOAD_LOCAL_APPS_ERROR,
+});
 
-function loadOfficialAppsAction() {
-    return {
-        type: LOAD_OFFICIAL_APPS,
-    };
-}
+const loadOfficialAppsAction = () => ({
+    type: LOAD_OFFICIAL_APPS,
+});
 
-function loadOfficialAppsSuccess(apps) {
-    return {
-        type: LOAD_OFFICIAL_APPS_SUCCESS,
-        apps,
-    };
-}
+const loadOfficialAppsSuccess = apps => ({
+    type: LOAD_OFFICIAL_APPS_SUCCESS,
+    apps,
+});
 
-function loadOfficialAppsError() {
-    return {
-        type: LOAD_OFFICIAL_APPS_ERROR,
-    };
-}
+const loadOfficialAppsError = () => ({
+    type: LOAD_OFFICIAL_APPS_ERROR,
+});
 
-function installOfficialAppAction(name, source) {
-    return {
-        type: INSTALL_OFFICIAL_APP,
-        name,
-        source,
-    };
-}
+const installOfficialAppAction = (name, source) => ({
+    type: INSTALL_OFFICIAL_APP,
+    name,
+    source,
+});
 
-function installOfficialAppSuccessAction(name, source) {
-    return {
-        type: INSTALL_OFFICIAL_APP_SUCCESS,
-        name,
-        source,
-    };
-}
+const installOfficialAppSuccessAction = (name, source) => ({
+    type: INSTALL_OFFICIAL_APP_SUCCESS,
+    name,
+    source,
+});
 
-function installOfficialAppErrorAction() {
-    return {
-        type: INSTALL_OFFICIAL_APP_ERROR,
-    };
-}
+const installOfficialAppErrorAction = () => ({
+    type: INSTALL_OFFICIAL_APP_ERROR,
+});
 
-function removeOfficialAppAction(name, source) {
-    return {
-        type: REMOVE_OFFICIAL_APP,
-        name,
-        source,
-    };
-}
+const removeOfficialAppAction = (name, source) => ({
+    type: REMOVE_OFFICIAL_APP,
+    name,
+    source,
+});
 
-function removeOfficialAppSuccessAction(name, source) {
-    return {
-        type: REMOVE_OFFICIAL_APP_SUCCESS,
-        name,
-        source,
-    };
-}
+const removeOfficialAppSuccessAction = (name, source) => ({
+    type: REMOVE_OFFICIAL_APP_SUCCESS,
+    name,
+    source,
+});
 
-function removeOfficialAppErrorAction() {
-    return {
-        type: REMOVE_OFFICIAL_APP_ERROR,
-    };
-}
+const removeOfficialAppErrorAction = () => ({
+    type: REMOVE_OFFICIAL_APP_ERROR,
+});
 
-function upgradeAllAppsAction() {
-    return {
-        type: UPGRADE_ALL_APPS,
-    };
-}
+const upgradeAllAppsAction = () => ({
+    type: UPGRADE_ALL_APPS,
+});
 
-function upgradeAllAppsSuccessAction() {
-    return {
-        type: UPGRADE_ALL_APPS_SUCCESS,
-    };
-}
+const upgradeAllAppsSuccessAction = () => ({
+    type: UPGRADE_ALL_APPS_SUCCESS,
+});
 
-function upgradeOfficialAppAction(name, version, source) {
-    return {
-        type: UPGRADE_OFFICIAL_APP,
-        name,
-        version,
-        source,
-    };
-}
+const upgradeOfficialAppAction = (name, version, source) => ({
+    type: UPGRADE_OFFICIAL_APP,
+    name,
+    version,
+    source,
+});
 
-function upgradeOfficialAppSuccessAction(name, version, source) {
-    return {
-        type: UPGRADE_OFFICIAL_APP_SUCCESS,
-        name,
-        version,
-        source,
-    };
-}
+const upgradeOfficialAppSuccessAction = (name, version, source) => ({
+    type: UPGRADE_OFFICIAL_APP_SUCCESS,
+    name,
+    version,
+    source,
+});
 
-function upgradeOfficialAppErrorAction() {
-    return {
-        type: UPGRADE_OFFICIAL_APP_ERROR,
-    };
-}
+const upgradeOfficialAppErrorAction = () => ({
+    type: UPGRADE_OFFICIAL_APP_ERROR,
+});
 
-export function downloadLatestAppInfoAction() {
-    return {
-        type: DOWNLOAD_LATEST_APP_INFO,
-    };
-}
+export const downloadLatestAppInfoAction = () => ({
+    type: DOWNLOAD_LATEST_APP_INFO,
+});
 
-export function downloadLatestAppInfoSuccessAction() {
-    return {
-        type: DOWNLOAD_LATEST_APP_INFO_SUCCESS,
-    };
-}
+export const downloadLatestAppInfoSuccessAction = () => ({
+    type: DOWNLOAD_LATEST_APP_INFO_SUCCESS,
+});
 
-export function downloadLatestAppInfoErrorAction() {
-    return {
-        type: DOWNLOAD_LATEST_APP_INFO_ERROR,
-    };
-}
+export const downloadLatestAppInfoErrorAction = () => ({
+    type: DOWNLOAD_LATEST_APP_INFO_ERROR,
+});
 
-export function showConfirmLaunchDialogAction(text, app) {
-    return {
-        type: SHOW_CONFIRM_LAUNCH_DIALOG,
-        text,
-        app,
-    };
-}
+export const showConfirmLaunchDialogAction = (text, app) => ({
+    type: SHOW_CONFIRM_LAUNCH_DIALOG,
+    text,
+    app,
+});
 
-export function hideConfirmLaunchDialogAction() {
-    return {
-        type: HIDE_CONFIRM_LAUNCH_DIALOG,
-    };
-}
+export const hideConfirmLaunchDialogAction = () => ({
+    type: HIDE_CONFIRM_LAUNCH_DIALOG,
+});
 
-export function setAppIconPath(source, name, iconPath) {
-    return {
-        type: SET_APP_ICON_PATH,
-        source,
-        name,
-        iconPath,
-    };
-}
+export const setAppIconPath = (source, name, iconPath) => ({
+    type: SET_APP_ICON_PATH,
+    source,
+    name,
+    iconPath,
+});
 
-export function setAppReleaseNoteAction(source, name, releaseNote) {
-    return {
-        type: SET_APP_RELEASE_NOTE,
-        source,
-        name,
-        releaseNote,
-    };
-}
+export const setAppReleaseNoteAction = (source, name, releaseNote) => ({
+    type: SET_APP_RELEASE_NOTE,
+    source,
+    name,
+    releaseNote,
+});
 
-export function setAppManagementShow(show = {}) {
+export const setAppManagementShow = (show = {}) => {
     const newState = {
         installed: true,
         available: true,
@@ -253,9 +205,9 @@ export function setAppManagementShow(show = {}) {
         type: SET_APP_MANAGEMENT_SHOW,
         show: newState,
     };
-}
+};
 
-export function setAppManagementFilter(filter) {
+export const setAppManagementFilter = filter => {
     const newState = filter === undefined
         ? settings.get('app-management.filter', '')
         : filter;
@@ -264,9 +216,9 @@ export function setAppManagementFilter(filter) {
         type: SET_APP_MANAGEMENT_FILTER,
         filter: newState,
     };
-}
+};
 
-export function setAppManagementSource(source, show) {
+export const setAppManagementSource = (source, show) => {
     const sources = { ...settings.get('app-management.sources', {}) };
     if (source) {
         if (show !== undefined) {
@@ -280,7 +232,7 @@ export function setAppManagementSource(source, show) {
         type: SET_APP_MANAGEMENT_SOURCE,
         sources,
     };
-}
+};
 
 /**
  * Download app icon and dispatch icon update event
@@ -292,141 +244,123 @@ export function setAppManagementSource(source, show) {
  *
  * @returns {void}
  */
-function downloadAppIcon(source, name, iconPath, iconUrl) {
-    return dispatch => {
-        // If there is a cached version, use it even before downloading.
-        if (fs.existsSync(iconPath)) {
-            dispatch(setAppIconPath(source, name, iconPath));
-        }
-        net.downloadToFile(iconUrl, iconPath, false)
-            .then(() => dispatch(setAppIconPath(source, name, iconPath)))
-            .catch(() => { /* Ignore 404 not found. */ });
-    };
-}
+const downloadAppIcon = (source, name, iconPath, iconUrl) => dispatch => {
+    // If there is a cached version, use it even before downloading.
+    if (fs.existsSync(iconPath)) {
+        dispatch(setAppIconPath(source, name, iconPath));
+    }
+    net.downloadToFile(iconUrl, iconPath, false)
+        .then(() => dispatch(setAppIconPath(source, name, iconPath)))
+        .catch(() => { /* Ignore 404 not found. */ });
+};
 
-export function loadLocalApps() {
-    return dispatch => {
-        dispatch(loadLocalAppsAction());
-        return mainApps.getLocalApps()
-            .then(apps => dispatch(loadLocalAppsSuccess(apps)))
-            .catch(error => {
-                dispatch(loadLocalAppsError());
-                dispatch(ErrorDialogActions.showDialog(error.message));
+export const loadLocalApps = () => dispatch => {
+    dispatch(loadLocalAppsAction());
+    return mainApps.getLocalApps()
+        .then(apps => dispatch(loadLocalAppsSuccess(apps)))
+        .catch(error => {
+            dispatch(loadLocalAppsError());
+            dispatch(ErrorDialogActions.showDialog(error.message));
+        });
+};
+
+export const loadOfficialApps = (appName, appSource) => dispatch => {
+    dispatch(loadOfficialAppsAction());
+    return mainApps.getOfficialApps()
+        .then(apps => {
+            dispatch(loadOfficialAppsSuccess(apps));
+            apps.filter(({ path }) => !path).forEach(({ source, name, url }) => {
+                const iconPath = join(`${config.getAppsRootDir(source)}`, `${name}.svg`);
+                const iconUrl = `${url}.svg`;
+                dispatch(downloadAppIcon(source, name, iconPath, iconUrl));
             });
-    };
-}
-
-export function loadOfficialApps(appName, appSource) {
-    return dispatch => {
-        dispatch(loadOfficialAppsAction());
-        return mainApps.getOfficialApps()
-            .then(apps => {
-                dispatch(loadOfficialAppsSuccess(apps));
-                apps.filter(({ path }) => !path).forEach(({ source, name, url }) => {
-                    const iconPath = join(`${config.getAppsRootDir(source)}`, `${name}.svg`);
-                    const iconUrl = `${url}.svg`;
-                    dispatch(downloadAppIcon(source, name, iconPath, iconUrl));
-                });
-                const downloadAllReleaseNotes = (app, ...rest) => {
-                    if (!app) {
-                        return Promise.resolve();
-                    }
-                    if (appName && !(app.name === appName && app.source === appSource)) {
-                        return downloadAllReleaseNotes(...rest);
-                    }
-                    return mainApps.downloadReleaseNotes(app)
-                        .then(releaseNote => releaseNote && dispatch(
-                            setAppReleaseNoteAction(app.source, app.name, releaseNote),
-                        )).then(() => downloadAllReleaseNotes(...rest));
-                };
-                downloadAllReleaseNotes(...apps);
-            })
-            .catch(error => {
-                dispatch(loadOfficialAppsError());
-                dispatch(ErrorDialogActions.showDialog('Unable to load apps: '
+            const downloadAllReleaseNotes = (app, ...rest) => {
+                if (!app) {
+                    return Promise.resolve();
+                }
+                if (appName && !(app.name === appName && app.source === appSource)) {
+                    return downloadAllReleaseNotes(...rest);
+                }
+                return mainApps.downloadReleaseNotes(app)
+                    .then(releaseNote => releaseNote && dispatch(
+                        setAppReleaseNoteAction(app.source, app.name, releaseNote),
+                    )).then(() => downloadAllReleaseNotes(...rest));
+            };
+            downloadAllReleaseNotes(...apps);
+        })
+        .catch(error => {
+            dispatch(loadOfficialAppsError());
+            dispatch(ErrorDialogActions.showDialog('Unable to load apps: '
                     + `${error.message}`));
-            });
-    };
-}
+        });
+};
 
-export function installOfficialApp(name, source) {
-    return dispatch => {
-        dispatch(installOfficialAppAction(name, source));
-        mainApps.installOfficialApp(name, 'latest', source)
-            .then(() => {
-                dispatch(installOfficialAppSuccessAction(name, source));
-                dispatch(loadOfficialApps(name, source));
-            })
-            .catch(error => {
-                dispatch(installOfficialAppErrorAction());
-                dispatch(ErrorDialogActions.showDialog(`Unable to install: ${error.message}`));
-            });
-    };
-}
+export const installOfficialApp = (name, source) => dispatch => {
+    dispatch(installOfficialAppAction(name, source));
+    mainApps.installOfficialApp(name, 'latest', source)
+        .then(() => {
+            dispatch(installOfficialAppSuccessAction(name, source));
+            dispatch(loadOfficialApps(name, source));
+        })
+        .catch(error => {
+            dispatch(installOfficialAppErrorAction());
+            dispatch(ErrorDialogActions.showDialog(`Unable to install: ${error.message}`));
+        });
+};
 
-export function removeOfficialApp(name, source) {
-    return dispatch => {
-        dispatch(removeOfficialAppAction(name, source));
-        mainApps.removeOfficialApp(name, source)
-            .then(() => {
-                dispatch(removeOfficialAppSuccessAction(name, source));
-                dispatch(loadOfficialApps(name, source));
-            })
-            .catch(error => {
-                dispatch(removeOfficialAppErrorAction());
-                dispatch(ErrorDialogActions.showDialog(`Unable to remove: ${error.message}`));
-            });
-    };
-}
+export const removeOfficialApp = (name, source) => dispatch => {
+    dispatch(removeOfficialAppAction(name, source));
+    mainApps.removeOfficialApp(name, source)
+        .then(() => {
+            dispatch(removeOfficialAppSuccessAction(name, source));
+            dispatch(loadOfficialApps(name, source));
+        })
+        .catch(error => {
+            dispatch(removeOfficialAppErrorAction());
+            dispatch(ErrorDialogActions.showDialog(`Unable to remove: ${error.message}`));
+        });
+};
 
-export function upgradeOfficialApp(name, version, source) {
-    return dispatch => {
-        dispatch(upgradeOfficialAppAction(name, version, source));
-        return mainApps.installOfficialApp(name, version, source)
-            .then(() => {
-                dispatch(upgradeOfficialAppSuccessAction(name, version, source));
-                dispatch(loadOfficialApps(name, source));
-            })
-            .catch(error => {
-                dispatch(upgradeOfficialAppErrorAction());
-                dispatch(ErrorDialogActions.showDialog(`Unable to upgrade: ${error.message}`));
-            });
-    };
-}
+export const upgradeOfficialApp = (name, version, source) => dispatch => {
+    dispatch(upgradeOfficialAppAction(name, version, source));
+    return mainApps.installOfficialApp(name, version, source)
+        .then(() => {
+            dispatch(upgradeOfficialAppSuccessAction(name, version, source));
+            dispatch(loadOfficialApps(name, source));
+        })
+        .catch(error => {
+            dispatch(upgradeOfficialAppErrorAction());
+            dispatch(ErrorDialogActions.showDialog(`Unable to upgrade: ${error.message}`));
+        });
+};
 
-export function upgradeAllApps(apps) {
-    return async dispatch => {
-        dispatch(upgradeAllAppsAction());
-        const upgrades = apps.map(({ name, latestVersion, source }) => (
-            dispatch(upgradeOfficialApp(name, latestVersion, source))
-        ));
-        await Promise.all(upgrades);
-        dispatch(upgradeAllAppsSuccessAction());
-    };
-}
+export const upgradeAllApps = apps => async dispatch => {
+    dispatch(upgradeAllAppsAction());
+    const upgrades = apps.map(({ name, latestVersion, source }) => (
+        dispatch(upgradeOfficialApp(name, latestVersion, source))
+    ));
+    await Promise.all(upgrades);
+    dispatch(upgradeAllAppsSuccessAction());
+};
 
-export function launch(app) {
-    return () => {
-        // The apps in state are Immutable Maps which cannot be sent over IPC.
-        // Converting to plain JS object before sending to the main process.
-        const appObj = app.toJS();
-        ipcRenderer.send('open-app', appObj);
-    };
-}
+export const launch = app => () => {
+    // The apps in state are Immutable Maps which cannot be sent over IPC.
+    // Converting to plain JS object before sending to the main process.
+    const appObj = app.toJS();
+    ipcRenderer.send('open-app', appObj);
+};
 
-export function checkEngineAndLaunch(app) {
-    return dispatch => {
-        if (!app.engineVersion) {
-            dispatch(showConfirmLaunchDialogAction('The app does not specify '
-                + 'which nRF Connect version(s) it supports. Ask the app '
-                + 'author to add an engines.nrfconnect definition to package.json, '
-                + 'ref. the documentation.', app));
-        } else if (!app.isSupportedEngine) {
-            dispatch(showConfirmLaunchDialogAction('The app only supports '
-                + `nRF Connect ${app.engineVersion} while your installed version `
-                + `is ${config.getVersion()}. It might not work as expected.`, app));
-        } else {
-            dispatch(launch(app));
-        }
-    };
-}
+export const checkEngineAndLaunch = app => dispatch => {
+    if (!app.engineVersion) {
+        dispatch(showConfirmLaunchDialogAction('The app does not specify '
+            + 'which nRF Connect version(s) it supports. Ask the app '
+            + 'author to add an engines.nrfconnect definition to package.json, '
+            + 'ref. the documentation.', app));
+    } else if (!app.isSupportedEngine) {
+        dispatch(showConfirmLaunchDialogAction('The app only supports '
+            + `nRF Connect ${app.engineVersion} while your installed version `
+            + `is ${config.getVersion()}. It might not work as expected.`, app));
+    } else {
+        dispatch(launch(app));
+    }
+};
