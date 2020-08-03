@@ -38,68 +38,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Iterable } from 'immutable';
 
-import AppItem from './AppItem';
-import AppManagementFilter from './AppManagementFilter/AppManagementFilter';
-import ReleaseNotesDialog from '../containers/ReleaseNotesDialogContainer';
+import Dropdown from 'react-bootstrap/Dropdown';
+import Row from 'react-bootstrap/Row';
 
-const AppManagementView = ({
-    apps,
-    sources,
-    installingAppName,
-    upgradingAppName,
-    removingAppName,
-    isProcessing,
-    onInstall,
-    onRemove,
-    onReadMore,
-    onAppSelected,
-    onCreateShortcut,
-    onShowReleaseNotes,
-}) => (
-    <>
-        <AppManagementFilter apps={apps} sources={sources} />
-        {
-            apps.map(app => (
-                <AppItem
-                    key={`${app.name}-${app.source}`}
-                    app={app}
-                    isDisabled={isProcessing}
-                    isInstalling={installingAppName === `${app.source}/${app.name}`}
-                    isUpgrading={upgradingAppName === `${app.source}/${app.name}`}
-                    isRemoving={removingAppName === `${app.source}/${app.name}`}
-                    onRemove={() => onRemove(app.name, app.source)}
-                    onInstall={() => onInstall(app.name, app.source)}
-                    onReadMore={() => onReadMore(app.homepage)}
-                    onAppSelected={() => onAppSelected(app)}
-                    onCreateShortcut={() => onCreateShortcut(app)}
-                    onShowReleaseNotes={() => onShowReleaseNotes(app)}
-                />
-            ))
-        }
-        <ReleaseNotesDialog />
-    </>
+import SourceFilter from './SourceFilter';
+import StateFilter from './StateFilter';
+import UpgradeAllApps from './UpgradeAllApps';
+import FilterSearchfield from './FilterSearchfield';
+
+const FilterDropdown = ({ sources }) => (
+    <Dropdown>
+        <Dropdown.Toggle variant="outline-secondary">
+            <span className="mdi mdi-tune" />
+            Filter
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+            <Row className="flex-nowrap">
+                <SourceFilter sources={sources} />
+                <StateFilter />
+            </Row>
+        </Dropdown.Menu>
+    </Dropdown>
+);
+FilterDropdown.propTypes = ({
+    sources: PropTypes.instanceOf(Object).isRequired,
+});
+
+const AppManagementFilter = ({ apps, sources }) => (
+    <div className="filterbox mb-3 w-100 d-inline-flex">
+        <FilterDropdown sources={sources} />
+        <FilterSearchfield />
+        <div className="flex-fill" />
+        <UpgradeAllApps apps={apps} />
+    </div>
 );
 
-AppManagementView.propTypes = {
+AppManagementFilter.propTypes = {
     apps: PropTypes.instanceOf(Iterable).isRequired,
     sources: PropTypes.instanceOf(Object).isRequired,
-    installingAppName: PropTypes.string,
-    upgradingAppName: PropTypes.string,
-    removingAppName: PropTypes.string,
-    isProcessing: PropTypes.bool,
-    onInstall: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired,
-    onReadMore: PropTypes.func.isRequired,
-    onAppSelected: PropTypes.func.isRequired,
-    onCreateShortcut: PropTypes.func.isRequired,
-    onShowReleaseNotes: PropTypes.func.isRequired,
 };
 
-AppManagementView.defaultProps = {
-    installingAppName: '',
-    upgradingAppName: '',
-    removingAppName: '',
-    isProcessing: false,
-};
-
-export default AppManagementView;
+export default AppManagementFilter;

@@ -36,17 +36,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Iterable } from 'immutable';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
 import Form from 'react-bootstrap/Form';
-
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import * as AppsActions from '../actions/appsActions';
+import * as AppsActions from '../../actions/appsActions';
 
 export const sortedSources = sources => {
     const all = Object.entries(sources);
@@ -88,94 +83,4 @@ SourceFilter.propTypes = {
     sources: PropTypes.instanceOf(Object).isRequired,
 };
 
-const StateFilter = () => {
-    const dispatch = useDispatch();
-    const { installed, available } = useSelector(state => state.apps.show);
-    const setAppManagementShow = newShow => dispatch(AppsActions.setAppManagementShow(newShow));
-
-    return (
-        <Col className="pr-4 pl-0">
-            <div className="border-bottom py-1 mx-3 mb-2">State</div>
-            <Form.Check
-                label="Installed"
-                id="cb-installed"
-                className="mx-3 py-1 px-4"
-                custom
-                checked={installed}
-                onChange={({ target }) => setAppManagementShow({
-                    installed: target.checked,
-                })}
-            />
-            <Form.Check
-                label="Available"
-                id="cb-available"
-                className="mx-3 py-1 px-4"
-                custom
-                checked={available}
-                onChange={({ target }) => setAppManagementShow({
-                    available: target.checked,
-                })}
-            />
-        </Col>
-    );
-};
-
-const FilterDropdown = ({ sources }) => (
-    <Dropdown>
-        <Dropdown.Toggle
-            variant="outline-secondary"
-        >
-            <span className="mdi mdi-tune" />
-            Filter
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-            <Row className="flex-nowrap">
-                <SourceFilter sources={sources} />
-                <StateFilter />
-            </Row>
-        </Dropdown.Menu>
-    </Dropdown>
-);
-FilterDropdown.propTypes = ({
-    sources: PropTypes.instanceOf(Object).isRequired,
-});
-
-const AppManagementFilter = ({ apps, sources }) => {
-    const dispatch = useDispatch();
-    const { filter, isUpgradingAllApps } = useSelector(state => state.apps);
-    const upgradeableApps = apps.filter(app => app.upgradeAvailable);
-
-    const upgradeAllApps = () => dispatch(AppsActions.upgradeAllApps(upgradeableApps));
-    const setAppManagementFilter = newFilter => (
-        dispatch(AppsActions.setAppManagementFilter(newFilter)));
-
-    return (
-        <div className="filterbox mb-3 w-100 d-inline-flex">
-            <FilterDropdown sources={sources} />
-            <Form.Control
-                type="text"
-                placeholder="Search..."
-                value={filter}
-                onChange={({ target }) => setAppManagementFilter(target.value)}
-            />
-            <div className="flex-fill" />
-            {upgradeableApps.size > 0 && (
-                <Button
-                    variant="outline-secondary"
-                    onClick={() => upgradeAllApps(upgradeableApps)}
-                    disabled={isUpgradingAllApps}
-                >
-                    {isUpgradingAllApps ? 'Updating all apps...' : 'Update all apps'}
-                </Button>
-            )}
-        </div>
-    );
-};
-
-AppManagementFilter.propTypes = {
-    apps: PropTypes.instanceOf(Iterable).isRequired,
-    sources: PropTypes.instanceOf(Object).isRequired,
-};
-
-export default AppManagementFilter;
+export default SourceFilter;

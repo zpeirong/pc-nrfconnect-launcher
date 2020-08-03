@@ -34,25 +34,24 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-import { sortedSources } from './AppManagementFilter';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import Form from 'react-bootstrap/Form';
 
-test('sortedSources sorts the sources into official, local and then the rest in alphabetical order', () => {
-    const local = {};
-    const official = {};
-    const OtherA = {};
-    const OtherB = {};
+import * as AppsActions from '../../actions/appsActions';
 
-    const sources = {
-        local,
-        official,
-        OtherA,
-        OtherB,
-    };
+export default () => {
+    const dispatch = useDispatch();
+    const filter = useSelector(state => state.apps.filter);
+    const setAppManagementFilter = newFilter => (
+        dispatch(AppsActions.setAppManagementFilter(newFilter)));
 
-    expect(sortedSources(sources)).toStrictEqual([
-        ['official', official],
-        ['local', local],
-        ['OtherA', OtherA],
-        ['OtherB', OtherB],
-    ]);
-});
+    return (
+        <Form.Control
+            type="text"
+            placeholder="Search..."
+            value={filter}
+            onChange={({ target }) => setAppManagementFilter(target.value)}
+        />
+    );
+};
