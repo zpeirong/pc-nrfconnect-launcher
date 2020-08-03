@@ -43,7 +43,7 @@ import Row from 'react-bootstrap/Row';
 
 import SourceFilter from './SourceFilter';
 import StateFilter from './StateFilter';
-import UpgradeAllApps from './UpgradeAllApps';
+import UpdateAllApps from './UpdateAllApps';
 import FilterSearchfield from './FilterSearchfield';
 
 const FilterDropdown = ({ sources }) => (
@@ -70,7 +70,7 @@ const AppManagementFilter = ({ apps, sources }) => (
         <FilterDropdown sources={sources} />
         <FilterSearchfield />
         <div className="flex-fill" />
-        <UpgradeAllApps apps={apps} />
+        <UpdateAllApps apps={apps} />
     </div>
 );
 

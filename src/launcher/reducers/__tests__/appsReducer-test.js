@@ -59,7 +59,7 @@ const app1 = {
     latestVersion: null,
     shortcutIconPath: null,
     source: null,
-    upgradeAvailable: null,
+    updateAvailable: null,
     url: null,
     releaseNote: null,
     repositoryUrl: null,
@@ -78,7 +78,7 @@ const app2 = {
     latestVersion: null,
     shortcutIconPath: null,
     source: null,
-    upgradeAvailable: null,
+    updateAvailable: null,
     url: null,
     releaseNote: null,
     repositoryUrl: null,
@@ -213,30 +213,30 @@ describe('appsReducer', () => {
         expect(stateAfter.removingAppName).toEqual(initialState.removingAppName);
     });
 
-    it('should be upgrading app after UPGRADE_OFFICIAL_APP has been dispatched', () => {
+    it('should be updating app after UPDATE_OFFICIAL_APP has been dispatched', () => {
         const state = reducer(initialState, {
-            type: AppsActions.UPGRADE_OFFICIAL_APP,
+            type: AppsActions.UPDATE_OFFICIAL_APP,
             name: 'pc-nrfconnect-foo',
             source: 'bar',
         });
-        expect(state.upgradingAppName).toEqual('bar/pc-nrfconnect-foo');
+        expect(state.updatingAppName).toEqual('bar/pc-nrfconnect-foo');
     });
 
-    it('should not be upgrading app after UPGRADE_OFFICIAL_APP_SUCCESS has been dispatched', () => {
-        const stateBefore = initialState.set('upgradingAppName', 'pc-nrfconnect-foo');
+    it('should not be updating app after UPDATE_OFFICIAL_APP_SUCCESS has been dispatched', () => {
+        const stateBefore = initialState.set('updatingAppName', 'pc-nrfconnect-foo');
         const stateAfter = reducer(stateBefore, {
-            type: AppsActions.UPGRADE_OFFICIAL_APP_SUCCESS,
+            type: AppsActions.UPDATE_OFFICIAL_APP_SUCCESS,
             name: 'pc-nrfconnect-foo',
         });
-        expect(stateAfter.upgradingAppName).toEqual(initialState.upgradingAppName);
+        expect(stateAfter.updatingAppName).toEqual(initialState.updatingAppName);
     });
 
-    it('should not be removing app after UPGRADE_OFFICIAL_APP_ERROR has been dispatched', () => {
-        const stateBefore = initialState.set('upgradingAppName', 'pc-nrfconnect-foo');
+    it('should not be removing app after UPDATE_OFFICIAL_APP_ERROR has been dispatched', () => {
+        const stateBefore = initialState.set('updatingAppName', 'pc-nrfconnect-foo');
         const stateAfter = reducer(stateBefore, {
-            type: AppsActions.UPGRADE_OFFICIAL_APP_ERROR,
+            type: AppsActions.UPDATE_OFFICIAL_APP_ERROR,
         });
-        expect(stateAfter.upgradingAppName).toEqual(initialState.upgradingAppName);
+        expect(stateAfter.updatingAppName).toEqual(initialState.updatingAppName);
     });
 
     it('should show confirm dialog when SHOW_CONFIRM_LAUNCH_DIALOG has been dispatched', () => {

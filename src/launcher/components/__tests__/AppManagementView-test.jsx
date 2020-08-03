@@ -74,7 +74,7 @@ describe('AppManagementView', () => {
         )).toMatchSnapshot();
     });
 
-    it('should render not-installed, installed, and upgradable apps', () => {
+    it('should render not-installed, installed, and updateable apps', () => {
         expect(renderer.create(
             <AppManagementView
                 apps={
@@ -164,7 +164,7 @@ describe('AppManagementView', () => {
         )).toMatchSnapshot();
     });
 
-    it('should disable buttons and display "Upgrading..." button text when upgrading app', () => {
+    it('should disable buttons and display "Updating..." button text when updating app', () => {
         expect(renderer.create(
             <AppManagementView
                 apps={List([
@@ -178,7 +178,7 @@ describe('AppManagementView', () => {
                     }),
                 ])}
                 isRetrievingApps={false}
-                upgradingAppName="bar/pc-nrfconnect-foo"
+                updatingAppName="bar/pc-nrfconnect-foo"
                 isProcessing
                 onAppSelected={() => {}}
                 onCreateShortcut={() => {}}

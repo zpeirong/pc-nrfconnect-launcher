@@ -50,7 +50,7 @@ import AppIcon from './AppIcon';
 const AppItem = ({
     app,
     onRemove,
-    isUpgrading,
+    isUpdating,
     isRemoving,
     isDisabled,
     isInstalling,
@@ -78,19 +78,19 @@ const AppItem = ({
                     <div className="small text-muted-more">
                         {app.source || 'local'}
                         {installed && <>, v{app.currentVersion}</>}
-                        {app.upgradeAvailable && <> (v{app.latestVersion} available)</>}
+                        {app.updateAvailable && <> (v{app.latestVersion} available)</>}
                     </div>
                 </Col>
                 <Col xs="auto ml-auto" className="d-flex align-items-center my-3 pl-3">
                     <ButtonToolbar className="wide-btns">
-                        {app.upgradeAvailable && (
+                        {app.updateAvailable && (
                             <Button
                                 variant="outline-primary"
                                 title={`Update ${app.displayName}`}
                                 disabled={isDisabled}
                                 onClick={onShowReleaseNotes}
                             >
-                                {isUpgrading ? 'Updating...' : 'Update'}
+                                {isUpdating ? 'Updating...' : 'Update'}
                             </Button>
                         )}
                         {installed && (
@@ -168,9 +168,9 @@ AppItem.propTypes = {
         latestVersion: PropTypes.string,
         releaseNote: PropTypes.string,
         source: PropTypes.string,
-        upgradeAvailable: PropTypes.bool,
+        updateAvailable: PropTypes.bool,
     }).isRequired,
-    isUpgrading: PropTypes.bool,
+    isUpdating: PropTypes.bool,
     isRemoving: PropTypes.bool,
     isDisabled: PropTypes.bool,
     isInstalling: PropTypes.bool,
@@ -184,7 +184,7 @@ AppItem.propTypes = {
 
 AppItem.defaultProps = {
     isDisabled: false,
-    isUpgrading: false,
+    isUpdating: false,
     isRemoving: false,
     isInstalling: false,
 };

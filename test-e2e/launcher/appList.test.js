@@ -71,7 +71,7 @@ describe('the list of all apps', () => {
             checkHasNoRemoveButton(app, 'Test App')
         ));
 
-        it('shows no available upgrade', () => (
+        it('shows no available update', () => (
             checkShowsNoAppUpdate(app, 'Test App')
         ));
     });
@@ -98,14 +98,14 @@ describe('the list of all apps', () => {
             checkHasRemoveButton(app, 'Test App')
         ));
 
-        it('shows no available upgrade', () => (
+        it('shows no available update', () => (
             checkShowsNoAppUpdate(app, 'Test App')
         ));
     });
 
-    describe('has an official apps that is upgradable', () => {
+    describe('has an official apps that is updateable', () => {
         const app = setupTestApp({
-            appsRootDir: 'launcher/fixtures/one-official-app-upgradable/.nrfconnect-apps',
+            appsRootDir: 'launcher/fixtures/one-official-app-updateable/.nrfconnect-apps',
         });
 
         it('is in the launcher app list', () => (
@@ -125,7 +125,7 @@ describe('the list of all apps', () => {
             checkHasRemoveButton(app, 'Test App')
         ));
 
-        it('shows an available upgrade', () => (
+        it('shows an available update', () => (
             checkShowsAppUpdate(app, 'Test App', 'v1.2.4')
         ));
     });
@@ -152,7 +152,7 @@ describe('the list of all apps', () => {
             checkHasNoRemoveButton(app, 'Test App')
         ));
 
-        it('shows no available upgrade', () => (
+        it('shows no available update', () => (
             checkShowsNoAppUpdate(app, 'Test App')
         ));
     });

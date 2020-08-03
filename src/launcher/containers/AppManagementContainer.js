@@ -46,7 +46,7 @@ function mapStateToProps(state) {
     const {
         apps: {
             localApps, officialApps,
-            installingAppName, removingAppName, upgradingAppName,
+            installingAppName, removingAppName, updatingAppName,
             show,
             filter,
             sources,
@@ -80,11 +80,11 @@ function mapStateToProps(state) {
         apps,
         installingAppName,
         removingAppName,
-        upgradingAppName,
-        isProcessing: !!installingAppName || !!upgradingAppName || !!removingAppName,
+        updatingAppName,
+        isProcessing: !!installingAppName || !!updatingAppName || !!removingAppName,
         show: { ...show },
         filter,
-        upgradeableApps: apps.filter(app => app.upgradeAvailable),
+        updateableApps: apps.filter(app => app.updateAvailable),
         sources,
     };
 }
@@ -100,8 +100,8 @@ function mapDispatchToProps(dispatch) {
         onAppSelected: app => dispatch(AppsActions.checkEngineAndLaunch(app)),
         onCreateShortcut: app => dispatch(DesktopShortcutActions.createShortcut(app)),
         onShowReleaseNotes: appid => dispatch(ReleaseNotes.show(appid)),
-        onUpgrade: (name, version, source) => dispatch(
-            AppsActions.upgradeOfficialApp(name, version, source),
+        onUpdate: (name, version, source) => dispatch(
+            AppsActions.updateOfficialApp(name, version, source),
         ),
         setAppManagementShow: show => dispatch(AppsActions.setAppManagementShow(show)),
         setAppManagementFilter: filter => dispatch(AppsActions.setAppManagementFilter(filter)),

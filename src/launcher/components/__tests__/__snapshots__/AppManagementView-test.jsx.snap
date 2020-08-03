@@ -21,7 +21,7 @@ Array [
           "source": "bar",
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
       ]
@@ -136,7 +136,7 @@ Array [
           "source": "bar",
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
       ]
@@ -241,7 +241,7 @@ Array [
 ]
 `;
 
-exports[`AppManagementView should disable buttons and display "Upgrading..." button text when upgrading app 1`] = `
+exports[`AppManagementView should disable buttons and display "Updating..." button text when updating app 1`] = `
 Array [
   <div
     apps={
@@ -262,7 +262,7 @@ Array [
           "source": "bar",
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
       ]
@@ -388,7 +388,7 @@ Array [
           "source": null,
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
         Immutable.Record {
@@ -407,7 +407,7 @@ Array [
           "source": null,
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
         Immutable.Record {
@@ -426,7 +426,7 @@ Array [
           "source": null,
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
       ]
@@ -686,7 +686,7 @@ Array [
 ]
 `;
 
-exports[`AppManagementView should render not-installed, installed, and upgradable apps 1`] = `
+exports[`AppManagementView should render not-installed, installed, and updateable apps 1`] = `
 Array [
   <div
     apps={
@@ -707,7 +707,7 @@ Array [
           "source": null,
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
         Immutable.Record {
@@ -726,7 +726,7 @@ Array [
           "source": null,
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
         Immutable.Record {
@@ -745,7 +745,7 @@ Array [
           "source": null,
           "url": null,
           "releaseNote": null,
-          "upgradeAvailable": null,
+          "updateAvailable": null,
           "repositoryUrl": null,
         },
       ]

@@ -57,11 +57,11 @@ export const INSTALL_OFFICIAL_APP_ERROR = 'INSTALL_OFFICIAL_APP_ERROR';
 export const REMOVE_OFFICIAL_APP = 'REMOVE_OFFICIAL_APP';
 export const REMOVE_OFFICIAL_APP_SUCCESS = 'REMOVE_OFFICIAL_APP_SUCCESS';
 export const REMOVE_OFFICIAL_APP_ERROR = 'REMOVE_OFFICIAL_APP_ERROR';
-export const UPGRADE_ALL_APPS = 'UPGRADE_ALL_APPS';
-export const UPGRADE_ALL_APPS_SUCCESS = 'UPGRADE_ALL_APPS_SUCCESS';
-export const UPGRADE_OFFICIAL_APP = 'UPGRADE_OFFICIAL_APP';
-export const UPGRADE_OFFICIAL_APP_SUCCESS = 'UPGRADE_OFFICIAL_APP_SUCCESS';
-export const UPGRADE_OFFICIAL_APP_ERROR = 'UPGRADE_OFFICIAL_APP_ERROR';
+export const UPDATE_ALL_APPS = 'UPDATE_ALL_APPS';
+export const UPDATE_ALL_APPS_SUCCESS = 'UPDATE_ALL_APPS_SUCCESS';
+export const UPDATE_OFFICIAL_APP = 'UPDATE_OFFICIAL_APP';
+export const UPDATE_OFFICIAL_APP_SUCCESS = 'UPDATE_OFFICIAL_APP_SUCCESS';
+export const UPDATE_OFFICIAL_APP_ERROR = 'UPDATE_OFFICIAL_APP_ERROR';
 export const SHOW_CONFIRM_LAUNCH_DIALOG = 'SHOW_CONFIRM_LAUNCH_DIALOG';
 export const HIDE_CONFIRM_LAUNCH_DIALOG = 'HIDE_CONFIRM_LAUNCH_DIALOG';
 export const DOWNLOAD_LATEST_APP_INFO = 'DOWNLOAD_LATEST_APP_INFO';
@@ -131,30 +131,30 @@ const removeOfficialAppErrorAction = () => ({
     type: REMOVE_OFFICIAL_APP_ERROR,
 });
 
-const upgradeAllAppsAction = () => ({
-    type: UPGRADE_ALL_APPS,
+const updateAllAppsAction = () => ({
+    type: UPDATE_ALL_APPS,
 });
 
-const upgradeAllAppsSuccessAction = () => ({
-    type: UPGRADE_ALL_APPS_SUCCESS,
+const updateAllAppsSuccessAction = () => ({
+    type: UPDATE_ALL_APPS_SUCCESS,
 });
 
-const upgradeOfficialAppAction = (name, version, source) => ({
-    type: UPGRADE_OFFICIAL_APP,
+const updateOfficialAppAction = (name, version, source) => ({
+    type: UPDATE_OFFICIAL_APP,
     name,
     version,
     source,
 });
 
-const upgradeOfficialAppSuccessAction = (name, version, source) => ({
-    type: UPGRADE_OFFICIAL_APP_SUCCESS,
+const updateOfficialAppSuccessAction = (name, version, source) => ({
+    type: UPDATE_OFFICIAL_APP_SUCCESS,
     name,
     version,
     source,
 });
 
-const upgradeOfficialAppErrorAction = () => ({
-    type: UPGRADE_OFFICIAL_APP_ERROR,
+const updateOfficialAppErrorAction = () => ({
+    type: UPDATE_OFFICIAL_APP_ERROR,
 });
 
 export const downloadLatestAppInfoAction = () => ({
@@ -321,26 +321,26 @@ export const removeOfficialApp = (name, source) => dispatch => {
         });
 };
 
-export const upgradeOfficialApp = (name, version, source) => dispatch => {
-    dispatch(upgradeOfficialAppAction(name, version, source));
+export const updateOfficialApp = (name, version, source) => dispatch => {
+    dispatch(updateOfficialAppAction(name, version, source));
     return mainApps.installOfficialApp(name, version, source)
         .then(() => {
-            dispatch(upgradeOfficialAppSuccessAction(name, version, source));
+            dispatch(updateOfficialAppSuccessAction(name, version, source));
             dispatch(loadOfficialApps(name, source));
         })
         .catch(error => {
-            dispatch(upgradeOfficialAppErrorAction());
-            dispatch(ErrorDialogActions.showDialog(`Unable to upgrade: ${error.message}`));
+            dispatch(updateOfficialAppErrorAction());
+            dispatch(ErrorDialogActions.showDialog(`Unable to update: ${error.message}`));
         });
 };
 
-export const upgradeAllApps = apps => async dispatch => {
-    dispatch(upgradeAllAppsAction());
-    const upgrades = apps.map(({ name, latestVersion, source }) => (
-        dispatch(upgradeOfficialApp(name, latestVersion, source))
+export const updateAllApps = apps => async dispatch => {
+    dispatch(updateAllAppsAction());
+    const updates = apps.map(({ name, latestVersion, source }) => (
+        dispatch(updateOfficialApp(name, latestVersion, source))
     ));
-    await Promise.all(upgrades);
-    dispatch(upgradeAllAppsSuccessAction());
+    await Promise.all(updates);
+    dispatch(updateAllAppsSuccessAction());
 };
 
 export const launch = app => () => {

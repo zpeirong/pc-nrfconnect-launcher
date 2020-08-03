@@ -46,7 +46,7 @@ const AppManagementView = ({
     apps,
     sources,
     installingAppName,
-    upgradingAppName,
+    updatingAppName,
     removingAppName,
     isProcessing,
     onInstall,
@@ -65,7 +65,7 @@ const AppManagementView = ({
                     app={app}
                     isDisabled={isProcessing}
                     isInstalling={installingAppName === `${app.source}/${app.name}`}
-                    isUpgrading={upgradingAppName === `${app.source}/${app.name}`}
+                    isUpdating={updatingAppName === `${app.source}/${app.name}`}
                     isRemoving={removingAppName === `${app.source}/${app.name}`}
                     onRemove={() => onRemove(app.name, app.source)}
                     onInstall={() => onInstall(app.name, app.source)}
@@ -84,7 +84,7 @@ AppManagementView.propTypes = {
     apps: PropTypes.instanceOf(Iterable).isRequired,
     sources: PropTypes.instanceOf(Object).isRequired,
     installingAppName: PropTypes.string,
-    upgradingAppName: PropTypes.string,
+    updatingAppName: PropTypes.string,
     removingAppName: PropTypes.string,
     isProcessing: PropTypes.bool,
     onInstall: PropTypes.func.isRequired,
@@ -97,7 +97,7 @@ AppManagementView.propTypes = {
 
 AppManagementView.defaultProps = {
     installingAppName: '',
-    upgradingAppName: '',
+    updatingAppName: '',
     removingAppName: '',
     isProcessing: false,
 };

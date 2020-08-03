@@ -390,7 +390,7 @@ function decorateWithLatestVersion(officialApp, availableUpdates) {
     return ({
         ...officialApp,
         latestVersion,
-        upgradeAvailable: latestVersion && officialApp.currentVersion !== latestVersion,
+        updateAvailable: latestVersion && officialApp.currentVersion !== latestVersion,
     });
 }
 

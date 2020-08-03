@@ -48,7 +48,7 @@ const view = ({
     name,
     releaseNote,
     source,
-    onUpgrade,
+    onUpdate,
     onHideReleaseNotes,
 }) => (
     <Modal
@@ -72,7 +72,7 @@ const view = ({
                 <Button
                     variant="primary"
                     onClick={() => {
-                        onUpgrade(name, latestVersion, source);
+                        onUpdate(name, latestVersion, source);
                         onHideReleaseNotes();
                     }}
                 >
@@ -96,7 +96,7 @@ view.propTypes = {
     releaseNote: PropTypes.string,
     source: PropTypes.string,
     name: PropTypes.string,
-    onUpgrade: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
     onHideReleaseNotes: PropTypes.func.isRequired,
 };
 

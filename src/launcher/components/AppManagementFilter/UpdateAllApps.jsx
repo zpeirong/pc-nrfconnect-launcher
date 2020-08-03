@@ -43,27 +43,27 @@ import Button from 'react-bootstrap/Button';
 
 import * as AppsActions from '../../actions/appsActions';
 
-const UpgradeAllApps = ({ apps }) => {
+const UpdateAllApps = ({ apps }) => {
     const dispatch = useDispatch();
-    const { isUpgradingAllApps } = useSelector(state => state.apps);
+    const { isUpdatingAllApps } = useSelector(state => state.apps);
 
-    const upgradeableApps = apps.filter(app => app.upgradeAvailable);
-    if (upgradeableApps.size === 0) {
+    const updateableApps = apps.filter(app => app.updateAvailable);
+    if (updateableApps.size === 0) {
         return null;
     }
 
     return (
         <Button
             variant="outline-secondary"
-            onClick={() => dispatch(AppsActions.upgradeAllApps(upgradeableApps))}
-            disabled={isUpgradingAllApps}
+            onClick={() => dispatch(AppsActions.updateAllApps(updateableApps))}
+            disabled={isUpdatingAllApps}
         >
-            {isUpgradingAllApps ? 'Updating all apps...' : 'Update all apps'}
+            {isUpdatingAllApps ? 'Updating all apps...' : 'Update all apps'}
         </Button>
     );
 };
-UpgradeAllApps.propTypes = {
+UpdateAllApps.propTypes = {
     apps: PropTypes.instanceOf(Iterable).isRequired,
 };
 
-export default UpgradeAllApps;
+export default UpdateAllApps;
